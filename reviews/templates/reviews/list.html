@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Customer Reviews</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            max-width: 780px;
+            margin: 2rem auto;
+            font-family: system-ui, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .review {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: .75rem;
+            border-radius: .5rem;
+        }
+
+        .meta {
+            font-size: .9rem;
+            color: #555;
+            margin-bottom: .25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Customer Reviews</h1>
+    {% if reviews %}
+    {% for r in reviews %}
+    <div class="review">
+        <div class="meta"><strong>{{ r.author_name }}</strong> — {{ r.rating }}/5 — {{ r.created_at|date:"Y-m-d H:i" }}
+        </div>
+        <div>{{ r.comment|linebreaksbr }}</div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>There are no reviews yet.</p>
+    {% endif %}
+</body>
+
+</html>
